@@ -28,6 +28,10 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<cucumber.version>7.10.1</cucumber.version>
+		<junit.jupiter.version>5.9.2</junit.jupiter.version>
+		<junit.platform.version>1.9.2</junit.platform.version>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -125,39 +129,59 @@
 			<version>3.3.1</version>
 		</dependency>
 
+		<!--JUnit5-->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!--Cucumber-->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.10.0</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-spring</artifactId>
-			<version>7.10.0</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>7.10.0</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>7.10.0</version>
+			<version>${cucumber.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.junit.vintage</groupId>
-			<artifactId>junit-vintage-engine</artifactId>
-			<scope>test</scope>
-		</dependency>
-
+		<!-- SonarQube -->
 		<dependency>
 			<groupId>org.sonarsource.scanner.maven</groupId>
 			<artifactId>sonar-maven-plugin</artifactId>

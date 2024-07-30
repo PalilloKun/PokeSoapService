@@ -1,5 +1,5 @@
 
-# Pokemon SOAP Service
+# <img src="https://media.tenor.com/GfzFmhWoWdMAAAAi/pikachu-run.gif" align="" width="100"> Pokemon SOAP Service 
 
 This project is part of challange, it exposes SOAP service that receive a string (name of the Pokemon) and also expose 6 different methods:
 - abilities
@@ -32,7 +32,7 @@ with the next fields
 
 
 
-## Installation
+## <img src="https://i.gifer.com/ZDcp.gif" align="" width="55"> Installation
 
 ### Prerequisites
 
@@ -78,7 +78,7 @@ Install my-project with npm
 
 
 
-## Databae
+## <img src="https://i.gifer.com/WnES.gif" align="" width="55"> Databae
 H2 databse was selected to store the field mencioned in the description of the project.
 
 The configuration file is the next:
@@ -101,7 +101,7 @@ The configuration file is the next:
 '
 ```
 
-## Time to test
+## <img src="https://i.gifer.com/YlVy.gif" align="" width="55">  Time to test
 
 You can test the following 6 end-points:
 
@@ -314,7 +314,7 @@ curl -L -X POST 'http://localhost:8088/ws' \
 
 
 
-## Testing
+## <img src="https://media.tenor.com/40q2xXN6gfMAAAAi/meowth-pokemon.gif" align="" width="55">  Testing
 
 To run the Junit  test run the following command
 
@@ -323,7 +323,8 @@ To run the Junit  test run the following command
 ```
 
 
-## SonarQube
+
+## <img src="https://media.tenor.com/iGSsICUR-2oAAAAi/mewtwo-sprite.gif" align="" width="55">   SonarQube
 
 Make sure you have already installed SonarQube in your computer, if not check the next link
 [SonarQube Documentation](https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/introduction/) to generate
@@ -342,13 +343,28 @@ Open a terminal, run the following command with the correct values
   -Dsonar.token=<TOKE>
 ```
 
-With thre previous command  **JUnit** and  **Cucumber** test will be executed
+or if you prefer modify next properties in sonar-project.properties
+
+sonar.projectKey=PROJECT_KEY<br>
+sonar.projectName= PROJECT_NAME<br>
+sonar.login=SONAR_TOKEN<br>
+sonar.host.url=URL_SONAR<br>
+
+
+and run
+
+```bash
+   mvn clean verify sonar:sonar -Dsonar.login=SONAR_TOKEN
+
+```
 
 
 
 
 
-## Tech Stack
+
+
+## <img src="https://i.gifer.com/4QYe.gif" align="" width="55">  Tech Stack
 
 |              |
 | ----------------- |
@@ -398,7 +414,7 @@ With thre previous command  **JUnit** and  **Cucumber** test will be executed
 
 
 
-## Evidence
+## Evidence JUnit
 
 To run tests, run the following command
 
@@ -407,7 +423,7 @@ To run tests, run the following command
 ```
 
 
-## Evidence Screenshots
+## <img src="https://i.gifer.com/ZAbj.gif" align="" width="55"> Evidence Screenshots
 
 
 ### Run locally
