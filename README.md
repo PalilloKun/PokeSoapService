@@ -1,3 +1,4 @@
+
 # Pokemon SOAP Service
 
 This project is part of challange, it exposes SOAP service that receive a string (name of the Pokemon) and also expose 6 different methods:
@@ -61,12 +62,21 @@ Install my-project with npm
 ```bash
   mvn clean install
 ```
-3. The dafault port is set in **8920**, you can change it in  **src/main/resources/application.yml** file
+3. The dafault port is set in **8088**, you can change it in  **src/main/resources/application.yml** file
    Run rhe following command
 
 ```bash
   mvn spring-boot:run
 ```
+
+4. **Important** Open the next url to verify if the **WSDL** service is working fine
+
+```bash
+  http://localhost:8919/ws/pokemons.wsdl
+```
+
+
+
 
 ## Databae
 H2 databse was selected to store the field mencioned in the description of the project.
@@ -100,7 +110,7 @@ You can test the following 6 end-points:
 #### Abilities
 
 ```http
-curl -L -X POST 'http://localhost:8920/ws' \
+curl -L -X POST 'http://localhost:8088/ws' \
 -H 'Content-Type: text/xml; charset=utf-8' \
 --data-raw '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -134,7 +144,7 @@ curl -L -X POST 'http://localhost:8920/ws' \
 #### Base experience
 
 ```http
-curl -L -X POST 'http://localhost:8920/ws' \
+curl -L -X POST 'http://localhost:8088/ws' \
 -H 'Content-Type: text/xml; charset=utf-8' \
 --data-raw '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -169,7 +179,7 @@ curl -L -X POST 'http://localhost:8920/ws' \
 #### Held items
 
 ```http
-curl -L -X POST 'http://localhost:8920/ws' \
+curl -L -X POST 'http://localhost:8088/ws' \
 -H 'Content-Type: text/xml; charset=utf-8' \
 --data-raw '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -203,7 +213,7 @@ curl -L -X POST 'http://localhost:8920/ws' \
 #### Id
 
 ```http
-curl -L -X POST 'http://localhost:8920/ws' \
+curl -L -X POST 'http://localhost:8088/ws' \
 -H 'Content-Type: text/xml; charset=utf-8' \
 --data-raw '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -237,7 +247,7 @@ curl -L -X POST 'http://localhost:8920/ws' \
 #### Name
 
 ```http
-curl -L -X POST 'http://localhost:8920/ws' \
+curl -L -X POST 'http://localhost:8088/ws' \
 -H 'Content-Type: text/xml; charset=utf-8' \
 --data-raw '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -272,7 +282,7 @@ curl -L -X POST 'http://localhost:8920/ws' \
 #### Location area encounters
 
 ```http
-curl -L -X POST 'http://localhost:8920/ws' \
+curl -L -X POST 'http://localhost:8088/ws' \
 -H 'Content-Type: text/xml; charset=utf-8' \
 --data-raw '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -384,3 +394,40 @@ With thre previous command  **JUnit** and  **Cucumber** test will be executed
 | ----------------- |
 | sonar-maven-plugin | 
 | jacoco-maven-plugin| 
+
+
+
+
+## Evidence
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+
+## Evidence Screenshots
+
+
+### Run locally
+
+
+![alt](https://raw.githubusercontent.com/PalilloKun/PokeSoapService/c094b0305a96eb05b59dab3c5a55284b515b4202/evidence/run_locally.png)
+
+### Run Junit
+
+![alt](https://raw.githubusercontent.com/PalilloKun/PokeSoapService/c094b0305a96eb05b59dab3c5a55284b515b4202/evidence/run_junit.png)
+
+### Run Cucumber
+
+![alt](https://raw.githubusercontent.com/PalilloKun/PokeSoapService/c094b0305a96eb05b59dab3c5a55284b515b4202/evidence/run_cucumber.png)
+
+
+### Run SonarQube
+
+![alt](https://raw.githubusercontent.com/PalilloKun/PokeSoapService/c094b0305a96eb05b59dab3c5a55284b515b4202/evidence/run_sonarqube.png)
+
+
+
+
