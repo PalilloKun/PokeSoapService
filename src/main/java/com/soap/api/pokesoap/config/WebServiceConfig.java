@@ -27,6 +27,12 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     public WebServiceConfig(SoapRequestInterceptor soapRequestInterceptor) {
         this.soapRequestInterceptor = soapRequestInterceptor;
     }
+
+    /**
+     *
+     * @param applicationContext
+     * @return
+     */
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -35,6 +41,11 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
+    /**
+     *
+     * @param productsSchema
+     * @return
+     */
     @Bean(name = "pokemons")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema productsSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -45,12 +56,20 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
+    /**
+     *
+     * @return
+     */
     @Bean
     public XsdSchema productsSchema() {
 
         return new SimpleXsdSchema(new ClassPathResource("pokesoapmethods.xsd"));
     }
 
+    /**
+     *
+     * @return
+     */
     @Bean
     public FilterRegistrationBean<IpFilter> ipFilter() {
         FilterRegistrationBean<IpFilter> registrationBean = new FilterRegistrationBean<>();

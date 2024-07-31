@@ -21,6 +21,11 @@ public class PokeApiClient {
                 .build();
     }
 
+    /**
+     *
+     * @param pokemonName
+     * @return
+     */
     public ResponseEntity<PokemonResponse> callPokeApiModel(String pokemonName){
         return pokeApiClient.get()
                 .uri(URL_POKEMON + pokemonName)

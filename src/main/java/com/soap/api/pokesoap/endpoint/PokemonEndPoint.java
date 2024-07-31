@@ -34,6 +34,12 @@ public class PokemonEndPoint {
         this.pokeApiClient = pokeApiClient;
     }
 
+    /**
+     *
+     * @param request
+     * @param request of type GetAbilityRequest
+     * @throws JsonProcessingException
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAbilityRequest")
     @ResponsePayload
     public GenericResponse getAbility(@RequestPayload GetAbilityRequest request) throws JsonProcessingException {
@@ -53,6 +59,12 @@ public class PokemonEndPoint {
         return response;
     }
 
+    /**
+     *
+     * @param request of type GetBaseExperienceRequest
+     * @return GenericResponse
+     * @throws JsonProcessingException
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getBaseExperienceRequest")
     @ResponsePayload
     public GenericResponse getBaseExperience(@RequestPayload GetBaseExperienceRequest request) {
@@ -69,6 +81,12 @@ public class PokemonEndPoint {
         return response;
     }
 
+    /**
+     *
+     * @param request of type GetHeldItemsRequest
+     * @return GenericResponse
+     * @throws JsonProcessingException
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getHeldItemsRequest")
     @ResponsePayload
     public GenericResponse getHeldItems(@RequestPayload GetHeldItemsRequest request) throws JsonProcessingException {
@@ -85,6 +103,12 @@ public class PokemonEndPoint {
         return response;
     }
 
+    /**
+     *
+     * @param request of type GetIdRequest
+     * @return GenericResponse
+     * @throws JsonProcessingException
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getIdRequest")
     @ResponsePayload
     public GenericResponse getId(@RequestPayload GetIdRequest request) {
@@ -101,6 +125,12 @@ public class PokemonEndPoint {
         return response;
     }
 
+    /**
+     *
+     * @param request of type GetNameRequest
+     * @return GenericResponse
+     * @throws JsonProcessingException
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getNameRequest")
     @ResponsePayload
     public GenericResponse getName(@RequestPayload GetNameRequest request) {
@@ -117,6 +147,12 @@ public class PokemonEndPoint {
         return response;
     }
 
+    /**
+     *
+     * @param request of type GetLocationAreaEncountersRequest
+     * @return GenericResponse
+     * @throws JsonProcessingException
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getLocationAreaEncountersRequest")
     @ResponsePayload
     public GenericResponse getName(@RequestPayload GetLocationAreaEncountersRequest request) {
