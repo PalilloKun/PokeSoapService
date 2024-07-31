@@ -1,18 +1,19 @@
 server:
     port: 8088
-
 spring:
     application:
         name: pokesoap
     datasource:
         driver-class-name: org.h2.Driver
-        password: ditto
+        password: PASSWORD
         url: jdbc:h2:mem:pokeapidb
-        username: pokemon
+        username: USER_NAME
     h2:
         console:
-            path: /h2-console
             enabled: true
+            path: /h2-console
+            settings:
+                web-allow-others: true
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:

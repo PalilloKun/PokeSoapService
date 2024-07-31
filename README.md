@@ -32,7 +32,7 @@ with the next fields
 
 
 
-## <img src="https://i.gifer.com/ZDcp.gif" align="" width="55"> Installation
+## <img src="https://media.tenor.com/IBWoFq2aazQAAAAi/amazing-wow.gif" align="" width="55"> Installation
 
 ### Prerequisites
 
@@ -57,38 +57,16 @@ Install my-project with npm
 
 2. Open it in your favourite IDE
 
-3. Open a terminal in your IDE and run the following command
-
-```bash
-  mvn clean install
-```
-3. The dafault port is set in **8088**, you can change it in  **src/main/resources/application.yml** file
-   Run rhe following command
-
-```bash
-  mvn spring-boot:run
-```
-
-4. **Important** Open the next url to verify if the **WSDL** service is working fine
-
-```bash
-  http://localhost:8919/ws/pokemons.wsdl
-```
-
-
-
-
-## <img src="https://i.gifer.com/WnES.gif" align="" width="55"> Databae
-H2 databse was selected to store the field mencioned in the description of the project.
+3. Open application.yml file and modify **USER_NAME** and **PASSWORD**
 
 The configuration file is the next:
 
 ```http
     datasource:
         driver-class-name: org.h2.Driver
-        password: ditto
+        password: PASSWORD
         url: jdbc:h2:mem:pokeapidb
-        username: pokemon
+        username: USER_NAME
     h2:
         console:
             path: /h2-console
@@ -101,11 +79,39 @@ The configuration file is the next:
 '
 ```
 
-## <img src="https://i.gifer.com/YlVy.gif" align="" width="55">  Time to test
+4. Open a terminal in your IDE and run the following command
+
+```bash
+  mvn clean install
+```
+5. The dafault port is set in **8088**, you can change it in  **src/main/resources/application.yml** file
+   Run rhe following command
+
+```bash
+  mvn spring-boot:run
+```
+
+6. **Important** Open the next url to verify if the **WSDL** service is working fine
+
+```bash
+  http://localhost:8088/ws/pokemons.wsdl
+```
+
+
+
+
+## <img src="https://media.tenor.com/DrdU6bRAfusAAAAi/bulbasaur-pokemon.gif" align="" width="55"> Databae
+H2 databse was selected to store the field mencioned in the description of the project.
+
+
+
+## <img src="https://media.tenor.com/w33hdDzoSE0AAAAi/haunter.gif" align="" width="55"> <a name="TimeToTest">Time to test</a>
 
 You can test the following 6 end-points:
 
 **Suggestion** copy the Curl`s in your favorite IDE testing (Postman, Insomnia, etc)
+
+Change the value `{pokemonName}` for desirable Pokemon name
 
 #### Abilities
 
@@ -313,6 +319,78 @@ curl -L -X POST 'http://localhost:8088/ws' \
 ```
 
 
+## <img src="https://media.tenor.com/wE4BAQWJGXkAAAAi/jolteon.gif" align="" width="100"> Docker
+
+If you want to test a different flavour instead of use your local environment, a docker compose file is
+provided to run this project in a container.
+
+Before run docker command in a terminal, please make sure if you have already installed Docker, if not
+please follow the next link [Install Docker Engine](https://docs.docker.com/engine/install/)
+
+The Dockerfile contains the next configuration:
+
+```
+FROM openjdk:17-jdk
+
+WORKDIR /app
+# Copy the application JAR file to the container
+COPY target/*.jar /app/pokesoap.jar
+EXPOSE 8088
+# Command to run the application and access to H2 console
+ENTRYPOINT ["java", "-jar", "pokesoap.jar",  "-web -webAllowOthers -tcp -tcpAllowOthers -browser"]
+```
+
+and docker-compose-file.yml is configured as:
+
+```
+services:
+  poske-soap-app:
+    build: .
+    ports:
+      - "8100:8088"
+    environment:
+      SPRING_APPLICATION_NAME: pokesoap
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:pokeapidb
+      SPRING_DATASOURCE_USERNAME: USER_NAME
+      SPRING_DATASOURCE_PASSWORD: PASSWORD
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_H2_CONSOLE_ENABLED: true
+      SPRING_H2_CONSOLE_PATH: /h2-console
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: true
+```
+
+please change **PASSWORD** and **USER_NAME** inside docker-compose-file.yml with a desirable values
+
+Open a terminal and run the next commands:
+
+```
+mvn clean install
+```
+
+```
+docker-compose up --build
+
+```
+
+### Verify deployment
+To verify if the application is running correctly in a Docker container, open the next url in your browser
+or in Postman
+
+```bash
+  http://localhost:8100/ws/pokemons.wsdl
+```
+you can also use the provided end-points described in  [Time to test](#TimeToTest) section only change the port number
+
+Access to H2 database:
+
+```bash
+  http://localhost:8100/h2-console/
+```
+copy `jdbc:h2:mem:pokeapidb` in JDBC URL field
+
+
 
 ## <img src="https://media.tenor.com/40q2xXN6gfMAAAAi/meowth-pokemon.gif" align="" width="55">  Testing
 
@@ -364,7 +442,7 @@ and run
 
 
 
-## <img src="https://i.gifer.com/4QYe.gif" align="" width="55">  Tech Stack
+## <img src="https://media.tenor.com/dhcnrh84KccAAAAi/onix-pokemon.gif" align="" width="55">  Tech Stack
 
 |              |
 | ----------------- |
@@ -423,7 +501,7 @@ To run tests, run the following command
 ```
 
 
-## <img src="https://i.gifer.com/ZAbj.gif" align="" width="55"> Evidence Screenshots
+## <img src="https://media.tenor.com/1pXB-ToqBpQAAAAi/pokemon-magnaton.gif" align="" width="65"> Evidence Screenshots
 
 
 ### Run locally

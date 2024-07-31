@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  poske-soap-app:
+    build: .
+    ports:
+      - "8100:8088"
+    environment:
+      SPRING_APPLICATION_NAME: pokesoap
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:pokeapidb
+      SPRING_DATASOURCE_USERNAME: USER_NAME
+      SPRING_DATASOURCE_PASSWORD: PASSWORD
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_H2_CONSOLE_ENABLED: true
+      SPRING_H2_CONSOLE_PATH: /h2-console
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: true
