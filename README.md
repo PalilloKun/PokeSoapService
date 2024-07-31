@@ -93,6 +93,10 @@ The configuration file is the next:
 
 6. **Important** Open the next url to verify if the **WSDL** service is working fine
 
+  You should see something similar like this<br>
+<img src="https://raw.githubusercontent.com/PalilloKun/PokeSoapService/main/evidence/wsdl.png" align="" width="395">
+
+
 ```bash
   http://localhost:8088/ws/pokemons.wsdl
 ```
@@ -100,8 +104,8 @@ The configuration file is the next:
 
 
 
-## <img src="https://media.tenor.com/DrdU6bRAfusAAAAi/bulbasaur-pokemon.gif" align="" width="55"> Databae
-H2 databse was selected to store the field mencioned in the description of the project.
+## <img src="https://media.tenor.com/DrdU6bRAfusAAAAi/bulbasaur-pokemon.gif" align="" width="55"> Database
+H2 database was selected to store the field mencioned in the description of the project.
 
 
 
