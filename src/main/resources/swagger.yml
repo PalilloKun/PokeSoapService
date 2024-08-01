@@ -1,0 +1,573 @@
+openapi: 3.0.1
+info:
+  title: PokemonSoapService
+  description: "This project is part of challange, it exposes SOAP service that receive a string (name of the Pokemon) and also expose 6 different methods: \n
+
+      **abilities** \n
+      \n**base_experience**\n
+      \n**held_items**\n
+      \n**id**\n
+      \n**name**\n
+      \n**location_area_encounters**"
+  version: 1.0.0
+servers:
+  - url: /ws
+security:
+  - clientID: []
+paths:
+  /getHeldItems:
+    post:
+      summary: Operation getHeldItems
+      operationId: getHeldItems
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/getHeldItemsInput'
+        required: true
+      responses:
+        default:
+          description: ""
+          content:
+            application/xml:
+              schema:
+                type: object
+      x-ibm-soap:
+        soap-action: ""
+        soap-operation: "{http://pokesoap.com/soap/pokemon}getHeldItems"
+      x-codegen-request-body-name: body
+  /getAbility:
+    post:
+      summary: Operation getAbility
+      operationId: getAbility
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/getAbilityInput'
+        required: true
+      responses:
+        default:
+          description: ""
+          content:
+            application/xml:
+              schema:
+                type: object
+      x-ibm-soap:
+        soap-action: ""
+        soap-operation: "{http://pokesoap.com/soap/pokemon}getAbilityRequest"
+      x-codegen-request-body-name: body
+  /getId:
+    post:
+      summary: Operation getId
+      operationId: getId
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/getIdInput'
+        required: true
+      responses:
+        default:
+          description: ""
+          content:
+            application/xml:
+              schema:
+                type: object
+      x-ibm-soap:
+        soap-action: ""
+        soap-operation: "{http://pokesoap.com/soap/pokemon}getIdRequest"
+      x-codegen-request-body-name: body
+  /getLocationAreaEncounters:
+    post:
+      summary: Operation getLocationAreaEncounters
+      operationId: getLocationAreaEncounters
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/getLocationAreaEncountersInput'
+        required: true
+      responses:
+        default:
+          description: ""
+          content:
+            application/xml:
+              schema:
+                type: object
+      x-ibm-soap:
+        soap-action: ""
+        soap-operation: "{http://pokesoap.com/soap/pokemon}getLocationAreaEncountersRequest"
+      x-codegen-request-body-name: body
+  /getBaseExperience:
+    post:
+      summary: Operation getBaseExperience
+      operationId: getBaseExperience
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/getBaseExperienceInput'
+        required: true
+      responses:
+        default:
+          description: ""
+          content:
+            application/xml:
+              schema:
+                type: object
+      x-ibm-soap:
+        soap-action: ""
+        soap-operation: "{http://pokesoap.com/soap/pokemon}getBaseExperienceRequest"
+      x-codegen-request-body-name: body
+  /getName:
+    post:
+      summary: Operation getName
+      operationId: getName
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/getNameInput'
+        required: true
+      responses:
+        default:
+          description: ""
+          content:
+            application/xml:
+              schema:
+                type: object
+      x-ibm-soap:
+        soap-action: ""
+        soap-operation: "{http://pokesoap.com/soap/pokemon}getNameRequest"
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    getHeldItemsInput:
+      required:
+        - Envelope
+      type: object
+      properties:
+        Envelope:
+          required:
+            - Body
+          type: object
+          properties:
+            Header:
+              $ref: '#/components/schemas/getHeldItemsHeader'
+            Body:
+              required:
+                - getHeldItemsRequest
+              type: object
+              properties:
+                getHeldItemsRequest:
+                  $ref: '#/components/schemas/getHeldItemsRequest_element_sch'
+              xml:
+                namespace: http://schemas.xmlsoap.org/soap/envelope/
+                prefix: soapenv
+          xml:
+            namespace: http://schemas.xmlsoap.org/soap/envelope/
+            prefix: soapenv
+      example: |2-
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+         <soapenv:Header></soapenv:Header>
+         <soapenv:Body>
+          <sch:getHeldItemsRequest xmlns:sch="http://pokesoap.com/soap/pokemon"><!-- mandatory -->
+           <sch:name><!-- mandatory -->string</sch:name>
+          </sch:getHeldItemsRequest>
+         </soapenv:Body>
+        </soapenv:Envelope>
+      x-ibm-schema:
+        wsdl-port: "{http://pokesoap.com/soap/pokemon}PokemonPortSoap11"
+        wsdl-operation: getHeldItemsRequest
+        wsdl-message-direction-or-name: getHeldItemsRequestRequest
+    getHeldItemsHeader:
+      type: object
+    GenericOutput:
+      required:
+        - Envelope
+      type: object
+      properties:
+        Envelope:
+          required:
+            - Body
+          type: object
+          properties:
+            Body:
+              type: object
+              properties:
+                GenericResponse:
+                  $ref: '#/components/schemas/GenericResponse_element_sch'
+              xml:
+                namespace: http://schemas.xmlsoap.org/soap/envelope/
+                prefix: soapenv
+          xml:
+            namespace: http://schemas.xmlsoap.org/soap/envelope/
+            prefix: soapenv
+      example: |2-
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+         <soapenv:Body>
+          <sch:GenericResponse xmlns:sch="http://pokesoap.com/soap/pokemon">
+           <sch:status><!-- mandatory -->string</sch:status>
+           <sch:message><!-- mandatory -->string</sch:message>
+          </sch:GenericResponse>
+         </soapenv:Body>
+        </soapenv:Envelope>
+      x-ibm-schema:
+        wsdl-port: "{http://pokesoap.com/soap/pokemon}PokemonPortSoap11"
+        wsdl-operation: Generic
+        wsdl-message-direction-or-name: GenericResponse
+    getAbilityInput:
+      required:
+        - Envelope
+      type: object
+      properties:
+        Envelope:
+          required:
+            - Body
+          type: object
+          properties:
+            Header:
+              $ref: '#/components/schemas/getAbilityHeader'
+            Body:
+              required:
+                - getAbilityRequest
+              type: object
+              properties:
+                getAbilityRequest:
+                  $ref: '#/components/schemas/getAbilityRequest_element_sch'
+              xml:
+                namespace: http://schemas.xmlsoap.org/soap/envelope/
+                prefix: soapenv
+          xml:
+            namespace: http://schemas.xmlsoap.org/soap/envelope/
+            prefix: soapenv
+      example: |2-
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+         <soapenv:Header></soapenv:Header>
+         <soapenv:Body>
+          <sch:getAbilityRequest xmlns:sch="http://pokesoap.com/soap/pokemon"><!-- mandatory -->
+           <sch:name><!-- mandatory -->string</sch:name>
+          </sch:getAbilityRequest>
+         </soapenv:Body>
+        </soapenv:Envelope>
+      x-ibm-schema:
+        wsdl-port: "{http://pokesoap.com/soap/pokemon}PokemonPortSoap11"
+        wsdl-operation: getAbilityRequest
+        wsdl-message-direction-or-name: getAbilityRequestRequest
+    getAbilityHeader:
+      type: object
+    getIdInput:
+      required:
+        - Envelope
+      type: object
+      properties:
+        Envelope:
+          required:
+            - Body
+          type: object
+          properties:
+            Header:
+              $ref: '#/components/schemas/getIdHeader'
+            Body:
+              required:
+                - getIdRequest
+              type: object
+              properties:
+                getIdRequest:
+                  $ref: '#/components/schemas/getIdRequest_element_sch'
+              xml:
+                namespace: http://schemas.xmlsoap.org/soap/envelope/
+                prefix: soapenv
+          xml:
+            namespace: http://schemas.xmlsoap.org/soap/envelope/
+            prefix: soapenv
+      example: |2-
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+         <soapenv:Header></soapenv:Header>
+         <soapenv:Body>
+          <sch:getIdRequest xmlns:sch="http://pokesoap.com/soap/pokemon"><!-- mandatory -->
+           <sch:name><!-- mandatory -->string</sch:name>
+          </sch:getIdRequest>
+         </soapenv:Body>
+        </soapenv:Envelope>
+      x-ibm-schema:
+        wsdl-port: "{http://pokesoap.com/soap/pokemon}PokemonPortSoap11"
+        wsdl-operation: getIdRequest
+        wsdl-message-direction-or-name: getIdRequestRequest
+    getIdHeader:
+      type: object
+    getLocationAreaEncountersInput:
+      required:
+        - Envelope
+      type: object
+      properties:
+        Envelope:
+          required:
+            - Body
+          type: object
+          properties:
+            Header:
+              $ref: '#/components/schemas/getLocationAreaEncountersHeader'
+            Body:
+              required:
+                - getLocationAreaEncountersRequest
+              type: object
+              properties:
+                getLocationAreaEncountersRequest:
+                  $ref: '#/components/schemas/getLocationAreaEncountersRequest_element_sch'
+              xml:
+                namespace: http://schemas.xmlsoap.org/soap/envelope/
+                prefix: soapenv
+          xml:
+            namespace: http://schemas.xmlsoap.org/soap/envelope/
+            prefix: soapenv
+      example: |2-
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+         <soapenv:Header></soapenv:Header>
+         <soapenv:Body>
+          <sch:getLocationAreaEncountersRequest xmlns:sch="http://pokesoap.com/soap/pokemon"><!-- mandatory -->
+           <sch:name><!-- mandatory -->string</sch:name>
+          </sch:getLocationAreaEncountersRequest>
+         </soapenv:Body>
+        </soapenv:Envelope>
+      x-ibm-schema:
+        wsdl-port: "{http://pokesoap.com/soap/pokemon}PokemonPortSoap11"
+        wsdl-operation: getLocationAreaEncountersRequest
+        wsdl-message-direction-or-name: getLocationAreaEncountersRequestRequest
+    getLocationAreaEncountersHeader:
+      type: object
+    getBaseExperienceInput:
+      required:
+        - Envelope
+      type: object
+      properties:
+        Envelope:
+          required:
+            - Body
+          type: object
+          properties:
+            Header:
+              $ref: '#/components/schemas/getBaseExperienceHeader'
+            Body:
+              required:
+                - getBaseExperienceRequest
+              type: object
+              properties:
+                getBaseExperienceRequest:
+                  $ref: '#/components/schemas/getBaseExperienceRequest_element_sch'
+              xml:
+                namespace: http://schemas.xmlsoap.org/soap/envelope/
+                prefix: soapenv
+          xml:
+            namespace: http://schemas.xmlsoap.org/soap/envelope/
+            prefix: soapenv
+      example: |2-
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+         <soapenv:Header></soapenv:Header>
+         <soapenv:Body>
+          <sch:getBaseExperienceRequest xmlns:sch="http://pokesoap.com/soap/pokemon"><!-- mandatory -->
+           <sch:name><!-- mandatory -->string</sch:name>
+          </sch:getBaseExperienceRequest>
+         </soapenv:Body>
+        </soapenv:Envelope>
+      x-ibm-schema:
+        wsdl-port: "{http://pokesoap.com/soap/pokemon}PokemonPortSoap11"
+        wsdl-operation: getBaseExperienceRequest
+        wsdl-message-direction-or-name: getBaseExperienceRequestRequest
+    getBaseExperienceHeader:
+      type: object
+    getNameInput:
+      required:
+        - Envelope
+      type: object
+      properties:
+        Envelope:
+          required:
+            - Body
+          type: object
+          properties:
+            Header:
+              $ref: '#/components/schemas/getNameHeader'
+            Body:
+              required:
+                - getNameRequest
+              type: object
+              properties:
+                getNameRequest:
+                  $ref: '#/components/schemas/getNameRequest_element_sch'
+              xml:
+                namespace: http://schemas.xmlsoap.org/soap/envelope/
+                prefix: soapenv
+          xml:
+            namespace: http://schemas.xmlsoap.org/soap/envelope/
+            prefix: soapenv
+      example: |2-
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+         <soapenv:Header></soapenv:Header>
+         <soapenv:Body>
+          <sch:getNameRequest xmlns:sch="http://pokesoap.com/soap/pokemon"><!-- mandatory -->
+           <sch:name><!-- mandatory -->string</sch:name>
+          </sch:getNameRequest>
+         </soapenv:Body>
+        </soapenv:Envelope>
+      x-ibm-schema:
+        wsdl-port: "{http://pokesoap.com/soap/pokemon}PokemonPortSoap11"
+        wsdl-operation: getNameRequest
+        wsdl-message-direction-or-name: getNameRequestRequest
+    getNameHeader:
+      type: object
+    getHeldItemsRequest_element_sch:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+      example: |2-
+
+        <sch:getHeldItemsRequest xmlns:sch="http://pokesoap.com/soap/pokemon">
+         <sch:name><!-- mandatory -->string</sch:name>
+        </sch:getHeldItemsRequest>
+      xml:
+        name: getHeldItemsRequest
+        namespace: http://pokesoap.com/soap/pokemon
+        prefix: sch
+    GenericResponse_element_sch:
+      required:
+        - message
+        - status
+      type: object
+      properties:
+        status:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+        message:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+      example: |2-
+
+        <sch:GenericResponse xmlns:sch="http://pokesoap.com/soap/pokemon">
+         <sch:status><!-- mandatory -->string</sch:status>
+         <sch:message><!-- mandatory -->string</sch:message>
+        </sch:GenericResponse>
+      xml:
+        name: GenericResponse
+        namespace: http://pokesoap.com/soap/pokemon
+        prefix: sch
+    getAbilityRequest_element_sch:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+      example: |2-
+
+        <sch:getAbilityRequest xmlns:sch="http://pokesoap.com/soap/pokemon">
+         <sch:name><!-- mandatory -->string</sch:name>
+        </sch:getAbilityRequest>
+      xml:
+        name: getAbilityRequest
+        namespace: http://pokesoap.com/soap/pokemon
+        prefix: sch
+    getIdRequest_element_sch:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+      example: |2-
+
+        <sch:getIdRequest xmlns:sch="http://pokesoap.com/soap/pokemon">
+         <sch:name><!-- mandatory -->string</sch:name>
+        </sch:getIdRequest>
+      xml:
+        name: getIdRequest
+        namespace: http://pokesoap.com/soap/pokemon
+        prefix: sch
+    getLocationAreaEncountersRequest_element_sch:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+      example: |2-
+
+        <sch:getLocationAreaEncountersRequest xmlns:sch="http://pokesoap.com/soap/pokemon">
+         <sch:name><!-- mandatory -->string</sch:name>
+        </sch:getLocationAreaEncountersRequest>
+      xml:
+        name: getLocationAreaEncountersRequest
+        namespace: http://pokesoap.com/soap/pokemon
+        prefix: sch
+    getBaseExperienceRequest_element_sch:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+      example: |2-
+
+        <sch:getBaseExperienceRequest xmlns:sch="http://pokesoap.com/soap/pokemon">
+         <sch:name><!-- mandatory -->string</sch:name>
+        </sch:getBaseExperienceRequest>
+      xml:
+        name: getBaseExperienceRequest
+        namespace: http://pokesoap.com/soap/pokemon
+        prefix: sch
+    getNameRequest_element_sch:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          xml:
+            namespace: http://pokesoap.com/soap/pokemon
+            prefix: sch
+      example: |2-
+
+        <sch:getNameRequest xmlns:sch="http://pokesoap.com/soap/pokemon">
+         <sch:name><!-- mandatory -->string</sch:name>
+        </sch:getNameRequest>
+      xml:
+        name: getNameRequest
+        namespace: http://pokesoap.com/soap/pokemon
+        prefix: sch
+  securitySchemes:
+    clientID:
+      type: apiKey
+      description: ""
+      name: X-IBM-Client-Id
+      in: header
+x-original-swagger-version: "2.0"

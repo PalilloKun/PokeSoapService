@@ -108,6 +108,13 @@ The configuration file is the next:
 H2 database was selected to store the field mencioned in the description of the project.
 
 
+## <img src="https://media.tenor.com/q2ek4JMXemgAAAAi/koffing-pokemon.gif" align="" width="55"> Swagger
+To open Swagger documentation, open the next url in your browser
+```
+http://localhost:8088/swagger-ui/index.html
+```
+
+
 
 ## <img src="https://media.tenor.com/w33hdDzoSE0AAAAi/haunter.gif" align="" width="55"> <a name="TimeToTest">Time to test</a>
 
